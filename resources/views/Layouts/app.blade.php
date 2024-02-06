@@ -10,6 +10,7 @@
         <nav>
             <ul>
                 <li><a href="{{ route('posts.index') }}">Home</a></li>
+                <li><a href="{{ route('posts.create') }}">New Post</a></li>
             </ul>
         </nav>
         @yield('content')

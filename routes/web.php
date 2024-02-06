@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController; 
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostCommentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +17,7 @@ use App\Http\Controllers\PostController;
 */
 
 Route::resource('posts', PostController::class);
+
+Route::post('posts/{post}/comments', [PostCommentController::class, 'store'])->name('comments.store');
 
 Route::redirect('/', '/posts');

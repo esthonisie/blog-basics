@@ -10,8 +10,8 @@
                 <h2>{{ $post->title }}</h2>
             </a>
         </p>
-        <p>{{ Str::limit($post->body, 200, ' (...)') }}</p>
-        <p>by: {{ $post->user->first_name }} {{ $post->user->last_name }}</p>
+        <p>{{ Str::limit($post->body, 200, ' [...]') }}</p>
+        <p>By {{ $post->user->name }}</p>
         <p>{{ $post->published_at->format('F j, Y') }}</p>
     @endforeach   
 

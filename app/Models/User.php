@@ -43,6 +43,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function getNameAttribute(): string
+    {
+        return $this->first_name.' '.$this->last_name;
+    }
+
     public function posts() 
     {
         return $this->hasMany(Post::class);

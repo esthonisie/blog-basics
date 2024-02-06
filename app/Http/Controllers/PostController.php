@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Carbon\Carbon;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -21,15 +24,19 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts/create', ['current' => Carbon::now()]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostRequest $request)
+    public function store(StorePostRequest $request): RedirectResponse
     {
-        //
+        $attributes = $request->validated();
+            
+        Post::create($attributes);
+          
+        return redirect(route('posts.index'));
     }
 
     /**
@@ -37,7 +44,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts/show', ['post' => $post]);
+        $current = Carbon::now();
+
+        return view('posts/show', compact('post', 'current'));
     }
 
     /**

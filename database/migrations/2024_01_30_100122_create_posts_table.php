@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('body');
             $table->string('image_path')->nullable();
             $table->boolean('is_premium')->default(false);
-            $table->timestamp('published_at')->nullable();
+            $table->timestamp('published_at');
             $table->timestamps();
         });
     }
