@@ -1,0 +1,62 @@
+.cards-main-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: auto;
+    background-color: var(--main-light);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.card-image-container {
+    background-color: #b1bd7d;
+    height: 150px;
+}
+
+.card-image-container img {
+    object-fit: cover;
+    width: 100%;
+    height:inherit;
+}
+
+.card-text-container {
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem;
+    line-height: 1;
+}
+
+.card-body {
+    font-size: 2.0rem;
+    margin-top: 15px;
+}
+
+.card-name {
+    color: #7a7a7a;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 500;
+    text-transform: lowercase;
+    margin-top: 15px;
+}
+
+.card-datetime {
+    color: #c33f25;
+    font-size: 1.6rem;
+    font-family: 'Archivo Black', sans-serif;
+    text-transform: lowercase;
+}

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('title');
             $table->text('body');
-            $table->string('image_path')->nullable();
+            $table->string('image_path')->default('../img/rijksmuseum-JGvanCaspel-1912-1080px.jpg');
             $table->boolean('is_premium')->default(false);
             $table->timestamp('published_at');
             $table->timestamps();
