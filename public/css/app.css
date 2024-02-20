@@ -9,8 +9,13 @@ body {
     background-color: var(--main-dark);
 }
 
-a {
+a,
+.welcome {
     color: var(--highlight);
+}
+
+.welcome {
+    text-transform: uppercase;
 }
 
 a:hover {
@@ -78,17 +83,36 @@ html {
 .nav-header ul {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     list-style: none;
     font-family: 'Alegreya Sans SC', sans-serif;
     font-size: 1.8rem;
 }
 
 .nav-header-home {
-    width: 250px;
+    width:fit-content;
     margin-right: 30px;
 }
 
+.nav-header-home li {
+    margin-right: 25px;
+}
+
 .nav-header-login {
-    width: 144px;
+    width: fit-content;
+}
+
+.nav-header-login li {
+    margin-left: 25px;
+}
+
+.flash-message {
+    color: #fff;
+    background-color: var(--highlight);
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 1.8rem;
+    position: fixed;
+    bottom: 0;
+    right: 0;
 }

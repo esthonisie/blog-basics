@@ -30,12 +30,29 @@
         <nav class="nav-header">
             <ul class="nav-header-home">
                 <li><a href="{{ route('posts.index') }}">HOME</a></li>
-                <li><a href="{{ route('posts.create') }}">NEW POST</a></li>
                 <li><a href="#">ABOUT US</a></li>
+                @auth
+                    <li><a href="{{ route('posts.create') }}">NEW POST</a></li>
+                @endauth
             </ul>
             <ul class="nav-header-login">
-                <li><a href="#">REGISTER</a></li>
-                <li><a href="#">LOGIN</a></li>
+                <li>
+                    @auth
+                        <span class="welcome">welcome {{ auth()->user()->username }}</span>
+                    @else
+                        <a href="{{ route('register.create') }}">REGISTER</a>
+                    @endauth
+                </li>
+                <li>
+                    @auth
+                        <form method="post" action="/logout">
+                            @csrf
+                            <button type="submit">LOG OUT</button>
+                        </form>
+                    @else
+                        <a href="{{ route('login.create') }}">LOGIN</a>
+                    @endauth
+                </li>
             </ul>
         </nav>
         <main>
@@ -43,5 +60,10 @@
         </main>
         <footer></footer>
     </div>
+    @if (session()->has('success'))
+        <div class="flash-message">
+            <p>{{ session('success') }}</p>
+        </div>
+    @endif
 </body>
 </html>
