@@ -17,12 +17,13 @@ class RegisterController extends Controller
     public function store(StoreUserRequest $request): RedirectResponse
     {
         $attributes = $request->validated();
+
+        $attributes['role_id'] = 4;
             
         $user = User::create($attributes);
 
         auth()->login($user);
           
-        // return redirect(route('posts.index'));
         return redirect(route('posts.index'))->with('success', 'Your account has been created.');
     }
 }

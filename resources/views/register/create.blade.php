@@ -52,9 +52,7 @@
             <p class="formError">{{ $message }}</p>
         @enderror
 
-        <input type="hidden" name="role_id" value="4">
-
-        <button class="btnForm" type="submit">Register</button>
+        <button class="btnForm" type="submit">Sign Up</button>
     </form>
   
 @endsection

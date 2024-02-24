@@ -9,14 +9,20 @@
             <div>By {{ $post->user->name }} | {{ $post->published_at->format('F j, Y') }}</div>
             <div>{{ $post->body }}</div>
         </article>
-    
-        @include('posts._comment-form')
-    
+        
+        <span id="top"></span>
+        @auth
+            @include('posts._comment-form')
+        @else
+            <p><a href="{{ route('login.create') }}">Log in here </a>to leave a comment.</p>
+        @endauth
+        
         @foreach ($post->comments as $comment )
             <div class="post-comment-box">
                 {{ $comment->user->username }} {{ $comment->published_at->format('F j, Y \a\t g:i a') }}
                 <br>
-                {{ $comment->body }}
+                <div id="{{ $comment->id }}">{{ $comment->body }}</div>
+                <a href="#top">back to top</a>
             </div>
         @endforeach
     </div>    

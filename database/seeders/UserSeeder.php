@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 
 class UserSeeder extends Seeder
@@ -18,24 +17,27 @@ class UserSeeder extends Seeder
             'role_id' => 1,
             'first_name' => 'Elaine',
             'last_name' => 'Marley',
+            'username' => 'Elaine Marley',
             'email' => 'bigwhoop@gsnail.com',
-            'password' => Hash::make('password')
+            'password' => 'password',
         ]);
 
         User::create([
             'role_id' => 2,
             'first_name' => 'Guybrush',
             'last_name' => 'Threepwood',
+            'username' => 'Guybrush Threepwood',
             'email' => '3headedmonkey@gsnail.com',
-            'password' => Hash::make('password')
+            'password' => 'password',
         ]);
 
         User::create([
             'role_id' => 2,
             'first_name' => 'Fester',
             'last_name' => 'Shinetop',
+            'username' => 'Fester Shinetop',
             'email' => 'lechuckrules@gsnail.com',
-            'password' => Hash::make('password')
+            'password' => 'password',
         ]);
 
         User::create([
@@ -44,7 +46,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Toothrot',
             'username' => 'ChattyHermit',
             'email' => 'bananapicker@gsnail.com',
-            'password' => Hash::make('password')
+            'password' => 'password',
         ]);
 
         User::create([
@@ -53,7 +55,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Scallion',
             'username' => 'DeadRapp35',
             'email' => 'steaminweeniehut@gsnail.com',
-            'password' => Hash::make('password')
+            'password' => 'password',
         ]);
     }
 }

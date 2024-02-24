@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSessionsRequest;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SessionsController extends Controller
 {
@@ -13,25 +13,31 @@ class SessionsController extends Controller
         return view('sessions.create');
     }
 
-    public function store(StoreSessionsRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        $attributes = $request->validated();
-
-        if (! auth()->attempt($attributes)) {
-            throw ValidationException::withMessages([
-                'email' => 'Please fill in the correct email.',
-                'password' => 'Please fill in the correct password.'
-            ]);    
+        $attributes = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+ 
+        if (Auth::attempt($attributes)) {
+            $request->session()->regenerate();
+ 
+            return redirect(route('posts.index'))->with('success', 'Welcome Back!');
         }
-
-        session()->regenerate();
-
-        return redirect(route('posts.index'))->with('success', 'Welcome Back!');   
+ 
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 
-    public function destroy()
+    public function destroy(Request $request): RedirectResponse
     {
-        auth()->logout();
+        Auth::logout();
+ 
+        $request->session()->invalidate();
+ 
+        $request->session()->regenerateToken();
 
         return redirect(route('posts.index'))->with('success', 'Goodbye!');
     }
