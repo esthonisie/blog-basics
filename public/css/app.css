@@ -3,6 +3,7 @@
     --main-light: #fff6ec;
     --highlight: #4e88ab;
     --highlight-hover: #b1bd7d;
+    --main-darkred: #9b321d;
   }
   
   body {
@@ -11,6 +12,11 @@
 
   form {
     color: var(--main-light);
+    font-size: 1.8rem;
+  }
+
+  .formError {
+    color: #cc3c1f;
     font-size: 1.8rem;
   }
   

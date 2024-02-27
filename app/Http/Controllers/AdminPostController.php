@@ -31,15 +31,20 @@ class AdminPostController extends Controller
 
         $attributes['user_id'] = auth()->id();
         $attributes['published_at'] = Carbon::now();
+        $categories = $attributes["category_id"];
         
         $post = Post::create($attributes);
-          
+
+        $post->categories()->sync($categories);
+
         return redirect(route('posts.show', ['post' => $post->id]));
     }
 
     public function edit(Post $post)
     {
-        return view('admin/posts/edit', ['post' => $post]);
+        $categories = Category::all();
+
+        return view('admin/posts/edit', compact('post', 'categories'));
     }
 
     public function update(StorePostRequest $request, Post $post)
@@ -49,8 +54,11 @@ class AdminPostController extends Controller
         }
 
         $attributes = $request->validated();
+
+        $categories = $attributes["category_id"];
         
         $post->update($attributes);
+        $post->categories()->sync($categories);
           
         return redirect(route('posts.show', ['post' => $post->id]))->with('success', 'Post Updated!');
     }

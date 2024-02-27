@@ -62,7 +62,7 @@
 }
 
 .card-datetime {
-    color: #c33f25;
+    color: var(--main-darkred);
     font-size: 1.6rem;
     font-family: 'Archivo Black', sans-serif;
     text-transform: lowercase;
@@ -81,7 +81,7 @@
 }
 
 .card-category-label span {
-    color: #9b321d;
+    color: var(--main-darkred);
 }
 
 .paginate-index {

@@ -3,27 +3,46 @@
 @section('title', 'Publish Post')
 
 @section('content')
-    
-    <form action="{{ route('posts.store') }}" method="post">
+    <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <label for="title">Title:</label>
         <br>
-        <input type="text" name="title" id="title">
+        <input type="text" name="title" id="title" value="{{ old('title') }}">
+        <br>
+
+        @error('title')
+            <p class="formError">{{ $message }}</p>
+        @enderror
         <br>
 
         <label for="contents">Contents:</label>
         <br>
-        <textarea name="body" id="contents"></textarea>
+        <textarea name="body" id="contents">{{ old('body') }}</textarea>
         <br>
 
-        {{-- <br>
-        @foreach ($categories as $category)
-            <input type="checkbox" id="{{ $category->name }}" name="category_id[]" value="{{ $category->id }}">
+        @error('body')
+            <p class="formError">{{ $message }}</p>
+        @enderror
+       <br>
+
+       <p>Add a maximum of 3 Categories:</p>
+       @foreach ($categories as $category)
+            <input 
+                type="checkbox" 
+                id="{{ $category->name }}" 
+                name="category_id[]" 
+                @checked(in_array($category->id, old('category_id', [])))
+                value="{{ $category->id }}"
+            >
             <label for="{{ $category->name }}">{{ $category->name }}</label>
             <br>
         @endforeach
-        <br> --}}
+
+        @error('category_id')
+            <p class="formError">{{ $message }}</p>
+        @enderror
+        <br>
 
         <button class="btnForm" type="submit">Publish</button>
     </form>

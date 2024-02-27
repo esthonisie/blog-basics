@@ -24,6 +24,8 @@ class StorePostRequest extends FormRequest
         return [
             'title' => ['required','min:2', 'max:255'],
             'body' => ['required'],
+            'category_id' => ['required', 'array', 'min:1', 'max:3'],
+            'category_id.*' => ['integer'],
         ];
     }
 }
