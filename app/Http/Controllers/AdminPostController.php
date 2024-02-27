@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Carbon\Carbon;
 use App\Http\Requests\StorePostRequest;
 use Illuminate\Http\RedirectResponse;
@@ -21,7 +22,7 @@ class AdminPostController extends Controller
 
     public function create()
     {
-        return view('admin/posts/create');
+        return view('admin/posts/create', ['categories' => Category::all()]);
     }
 
     public function store(StorePostRequest $request): RedirectResponse

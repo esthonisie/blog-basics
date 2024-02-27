@@ -1,0 +1,25 @@
+.sidebar-container {
+    min-width: 185px;
+    max-width: 185px;
+    min-height: calc(100vh - 260px);
+    border-left: 1px dotted var(--highlight);
+}
+
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    background-color: var(--main-light);
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.category-label {
+    font-size: 1.6rem;
+    margin-right: 5px;
+    font-weight: 700;
+}
+
+.category-label span {
+    color: #9b321d;
+}

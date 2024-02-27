@@ -4,7 +4,7 @@
 
 @section('content')
     
-    <form class="formCreate" action="{{ route('posts.store') }}" method="post">
+    <form action="{{ route('posts.store') }}" method="post">
         @csrf
 
         <label for="title">Title:</label>
@@ -16,7 +16,15 @@
         <br>
         <textarea name="body" id="contents"></textarea>
         <br>
-        
+
+        {{-- <br>
+        @foreach ($categories as $category)
+            <input type="checkbox" id="{{ $category->name }}" name="category_id[]" value="{{ $category->id }}">
+            <label for="{{ $category->name }}">{{ $category->name }}</label>
+            <br>
+        @endforeach
+        <br> --}}
+
         <button class="btnForm" type="submit">Publish</button>
     </form>
   

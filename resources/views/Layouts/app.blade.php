@@ -13,10 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet"> 
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/posts-index.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/posts-show.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/posts-create.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/posts-comments.css') }}" rel="stylesheet" />
 </head>
 <body>
     <div class="blog-container">
@@ -60,6 +59,10 @@
         </nav>
         <main>
             @yield('content')
+            {{-- TODO: vervangen door components, eerst nog lezen hoe... --}}
+            @use('App\Models\Category')
+            @include('partials/sidebar', ['categories' => Category::has('posts')
+            ->withCount('posts')->orderByDesc('posts_count')->get()])
         </main>
         <footer></footer>
     </div>

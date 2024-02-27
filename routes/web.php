@@ -1,12 +1,13 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\PostCommentController;
-use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
-
+use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\PostCommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,9 @@ use App\Http\Controllers\SessionsController;
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
-Route::post('posts/{post}/comments', [PostCommentController::class, 'store'])->name('comments.store');
+Route::post('/posts/{post}/comments', [PostCommentController::class, 'store'])->name('comments.store');
+
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
 Route::middleware('creator')->group(function () {
     Route::get('/admin/posts/create', [AdminPostController::class, 'create'])->name('posts.create');
@@ -31,6 +34,7 @@ Route::middleware('creator')->group(function () {
     Route::patch('/admin/posts/{post}', [AdminPostController::class, 'update'])->name('posts.update');
     Route::delete('/admin/posts/{post}', [AdminPostController::class, 'destroy'])->name('posts.delete');
     Route::get('/admin/dashboard', [AdminPostController::class, 'index'])->name('dashboard.index');
+    Route::post('/admin/posts/categories', [CategoryController::class, 'store'])->name('categories.store');
 });
 
 Route::middleware('guest')->group(function () {

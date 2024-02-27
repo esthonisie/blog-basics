@@ -12,9 +12,9 @@
         
         <span id="top"></span>
         @auth
-            @include('posts._comment-form')
+            @include('partials._comment-form')
         @else
-            <p><a href="{{ route('login.create') }}">Log in here </a>to leave a comment.</p>
+            <p style="color: #fff6ec; font-size: 1.8rem;"><a href="{{ route('login.create') }}">Log in here </a>to leave a comment.</p>
         @endauth
         
         @foreach ($post->comments as $comment )

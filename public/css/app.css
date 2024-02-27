@@ -8,7 +8,17 @@
   body {
       background-color: var(--main-dark);
   }
+
+  form {
+    color: var(--main-light);
+    font-size: 1.8rem;
+  }
   
+  main {
+    display: flex;
+    justify-content: space-between;
+  }
+
   a,
   #btn-logout {
       color: var(--highlight);

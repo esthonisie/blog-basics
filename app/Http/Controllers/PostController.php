@@ -9,7 +9,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('posts/index', ['posts' => Post::all()->sortByDesc('published_at')]);
+        return view('posts/index', ['posts' => Post::with('user', 'categories')
+        ->orderByDesc('published_at')->SimplePaginate(24)]);
     }
 
     public function show(Post $post)
