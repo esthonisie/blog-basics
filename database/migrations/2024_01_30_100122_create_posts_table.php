@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('title');
+            $table->string('title')->unique();
             $table->text('body');
-            $table->string('image_path')->default('../img/rijksmuseum-JGvanCaspel-1912-1080px.jpg');
+            $table->string('image_post');
+            $table->string('image_card');
             $table->boolean('is_premium')->default(false);
             $table->timestamp('published_at');
             $table->timestamps();

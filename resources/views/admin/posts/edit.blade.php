@@ -4,7 +4,10 @@
 
 @section('content')
     
-    <form class="formCreate" action="{{ route('posts.update', ['post' => $post->id]) }}" method="post">
+    <form class="formCreate" 
+        action="{{ route('posts.update', ['post' => $post->id]) }}" 
+        method="post" 
+        enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 
@@ -27,6 +30,17 @@
             <p class="formError">{{ $message }}</p>
         @enderror
         <br>
+
+        <label for="image">Image:</label>
+        <br>
+        <input type="file" name="image_post" id="image" value="{{ old('image_post', $post->image_post) }}">
+        <br>
+        <img src="{{ asset('storage/' . $post->image_post) }}" style="width: 255px;">
+
+        @error('image_post')
+            <p class="formError">{{ $message }}</p>
+        @enderror
+       <br>
 
         @foreach ($categories as $category)
             <input 

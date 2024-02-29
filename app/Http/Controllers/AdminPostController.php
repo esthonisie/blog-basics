@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\Category;
-use Carbon\Carbon;
-use App\Http\Requests\StorePostRequest;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 
 class AdminPostController extends Controller
 {
@@ -31,10 +32,11 @@ class AdminPostController extends Controller
 
         $attributes['user_id'] = auth()->id();
         $attributes['published_at'] = Carbon::now();
-        $categories = $attributes["category_id"];
-        
-        $post = Post::create($attributes);
+        $attributes['image_post'] = request()->file('image_post')->store('img/post-main-img', 'public');
+        $attributes['image_card'] = $attributes['image_post']; // TODO: install 'Intervention Image' for making smaller size img copy 
+        $categories = $attributes['category_id'];
 
+        $post = Post::create($attributes);
         $post->categories()->sync($categories);
 
         return redirect(route('posts.show', ['post' => $post->id]));
@@ -47,13 +49,18 @@ class AdminPostController extends Controller
         return view('admin/posts/edit', compact('post', 'categories'));
     }
 
-    public function update(StorePostRequest $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
     {
         if ($post->user_id !== auth()->id()) {
             abort(403, 'unauthorized Action');
         }
 
         $attributes = $request->validated();
+
+        if (isset($attributes['image_post'])) {
+            $attributes['image_post'] = request()->file('image_post')->store('img/post-main-img', 'public');
+            $attributes['image_card'] = $attributes['image_post'];
+        }
 
         $categories = $attributes["category_id"];
         

@@ -1,7 +1,7 @@
 @foreach ($posts as $post)    
     <article class="card-container">
         <div class="card-image-container">
-            <img src="{{ $post->image_path }}">
+            <img src="{{ asset('storage/' . $post->image_card) }}">
         </div>
         <div class="card-text-container">
             <div>

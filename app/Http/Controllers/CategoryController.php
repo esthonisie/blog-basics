@@ -10,8 +10,10 @@ class CategoryController extends Controller
 {
     public function show(Category $category)
     {
-        $posts = $category->posts()->with('user', 'categories')->get();
-        return view('categories.show', compact('posts'));
+        return view('categories.show', ['posts' => $category->posts()
+        ->with('user', 'categories')
+        ->orderByDesc('published_at')
+        ->SimplePaginate(24)]);
     }
 
     public function store(Request $request): RedirectResponse
@@ -24,5 +26,4 @@ class CategoryController extends Controller
           
         return redirect(route('dashboard.index'))->with('success', 'New Category Added');
     }
-
 }

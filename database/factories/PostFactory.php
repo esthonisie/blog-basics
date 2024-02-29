@@ -20,7 +20,8 @@ class PostFactory extends Factory
             'user_id' => fake()->numberBetween(1,3),
             'title' => fake()->unique()->sentence(),
             'body' => fake()->text(1000),
-            'image_path' => '../img/rijksmuseum-JGvanCaspel-1912-1080px.jpg',
+            'image_post' => '../storage/img/post-main-img/rijksmuseum-jgvancaspel-1912_1500px.webp',
+            'image_card' => '../storage/img/post-main-img/rijksmuseum-jgvancaspel-1912_card.webp',
             'published_at' => fake()->unique()->dateTimeBetween('-2 years', '-3 months', null),
         ];
     }

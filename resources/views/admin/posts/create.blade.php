@@ -3,7 +3,10 @@
 @section('title', 'Publish Post')
 
 @section('content')
-    <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
+    <form 
+        action="{{ route('posts.store') }}" 
+        method="post" 
+        enctype="multipart/form-data">
         @csrf
 
         <label for="title">Title:</label>
@@ -22,6 +25,16 @@
         <br>
 
         @error('body')
+            <p class="formError">{{ $message }}</p>
+        @enderror
+       <br>
+
+       <label for="image">Image Upload:</label>
+        <br>
+        <input type="file" name="image_post" id="image">
+        <br>
+
+        @error('image_post')
             <p class="formError">{{ $message }}</p>
         @enderror
        <br>

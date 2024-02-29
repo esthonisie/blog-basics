@@ -7,5 +7,8 @@
         <div class="cards-main-container">
             @include('partials._card-post')
         </div>
+        <div class="paginate-index">
+            {{ $posts->links() }}
+        </div>
     </div>
 @endsection

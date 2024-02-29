@@ -1,0 +1,2 @@
+- Put both image folders in storage/app/public/img
+- Link to public folder: $php artisan storage:link

@@ -5,6 +5,7 @@
 @section('content')
     <div class="post-main-box">
         <article class="article-full">
+            <img src="{{ asset('storage/' . $post->image_post) }}" style="width: 100%;">
             <h1>{{ $post->title }}</h1>
             <div>By {{ $post->user->name }} | {{ $post->published_at->format('F j, Y') }}</div>
             <div>{{ $post->body }}</div>
