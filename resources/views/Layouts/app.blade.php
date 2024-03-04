@@ -33,8 +33,10 @@
             </ul>
             <ul class="nav-header-login">
                 @auth
-                    @if (auth()->user()->role_id === 1 || auth()->user()->role_id === 2) {
-                            <li><a href="{{ route('dashboard.index') }}">DASHBOARD</a></li>
+                    @if (in_array(auth()->user()?->role_id, [1, 2])) {
+                            <li>
+                                <a href="{{ route('dashboard.index') }}">DASHBOARD</a>
+                            </li>
                         }
                     @endif   
                 @endauth
@@ -47,9 +49,15 @@
                 </li>
                 <li>
                     @auth
-                        <form method="post" action="/logout">
+                        <form 
+                            method="post" 
+                            action="/logout"
+                        >
                             @csrf
-                            <button id="btn-logout" type="submit">LOG OUT</button>
+                            <button 
+                                id="btn-logout" 
+                                type="submit">LOG OUT
+                            </button>
                         </form>
                     @else
                         <a href="{{ route('login.create') }}">LOGIN</a>

@@ -6,12 +6,18 @@
     <form 
         action="{{ route('posts.store') }}" 
         method="post" 
-        enctype="multipart/form-data">
+        enctype="multipart/form-data"
+    >
         @csrf
 
         <label for="title">Title:</label>
         <br>
-        <input type="text" name="title" id="title" value="{{ old('title') }}">
+        <input 
+            type="text" 
+            name="title" 
+            id="title" 
+            value="{{ old('title') }}"
+        >
         <br>
 
         @error('title')
@@ -21,7 +27,10 @@
 
         <label for="contents">Contents:</label>
         <br>
-        <textarea name="body" id="contents">{{ old('body') }}</textarea>
+        <textarea 
+            name="body" 
+            id="contents"
+        >{{ old('body') }}</textarea>
         <br>
 
         @error('body')
@@ -31,7 +40,11 @@
 
        <label for="image">Image Upload:</label>
         <br>
-        <input type="file" name="image_post" id="image">
+        <input 
+            type="file" 
+            name="image_post" 
+            id="image"
+        >
         <br>
 
         @error('image_post')
@@ -57,7 +70,10 @@
         @enderror
         <br>
 
-        <button class="btnForm" type="submit">Publish</button>
+        <button 
+            class="btnForm" 
+            type="submit">Publish
+        </button>
     </form>
   
 @endsection

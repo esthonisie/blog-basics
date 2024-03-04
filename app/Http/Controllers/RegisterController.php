@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -24,6 +23,7 @@ class RegisterController extends Controller
 
         auth()->login($user);
           
-        return redirect(route('posts.index'))->with('success', 'Your account has been created.');
+        return redirect(route('posts.index'))
+            ->with('success', 'Your account has been created.');
     }
 }

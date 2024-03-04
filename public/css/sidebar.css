@@ -1,6 +1,6 @@
 .sidebar-container {
-    min-width: 185px;
-    max-width: 185px;
+    min-width: var(--width-sidebar);
+    max-width: var(--width-sidebar);
     min-height: calc(100vh - 260px);
     border-left: 1px dotted var(--highlight);
 }
@@ -12,6 +12,8 @@
     background-color: var(--main-light);
     margin-top: 20px;
     border-radius: 8px;
+    position: sticky;
+    top: 80px;
 }
 
 .category-label {

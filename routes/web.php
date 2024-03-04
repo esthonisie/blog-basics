@@ -22,19 +22,18 @@ use App\Http\Controllers\PostCommentController;
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-
-Route::post('/posts/{post}/comments', [PostCommentController::class, 'store'])->name('comments.store');
-
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+Route::redirect('/', '/posts');
 
-Route::middleware('creator')->group(function () {
-    Route::get('/admin/posts/create', [AdminPostController::class, 'create'])->name('posts.create');
-    Route::post('/admin/posts', [AdminPostController::class, 'store'])->name('posts.store');
-    Route::get('/admin/posts/{post}/edit', [AdminPostController::class, 'edit'])->name('posts.edit');
-    Route::patch('/admin/posts/{post}', [AdminPostController::class, 'update'])->name('posts.update');
-    Route::delete('/admin/posts/{post}', [AdminPostController::class, 'destroy'])->name('posts.delete');
-    Route::get('/admin/dashboard', [AdminPostController::class, 'index'])->name('dashboard.index');
-    Route::post('/admin/posts/categories', [CategoryController::class, 'store'])->name('categories.store');
+Route::middleware('auth')->group(function () {
+    Route::middleware('creator')->prefix('admin')->group(function () {
+        Route::resource('/posts', AdminPostController::class)->except('index', 'show');
+        Route::get('/dashboard', [AdminPostController::class, 'index'])->name('dashboard.index');
+        Route::post('/posts/categories', [CategoryController::class, 'store'])->name('categories.store');
+    });
+
+    Route::post('/posts/{post}/comments', [PostCommentController::class, 'store'])->name('comments.store');
+    Route::post('logout', [SessionsController::class, 'destroy']);
 });
 
 Route::middleware('guest')->group(function () {
@@ -43,7 +42,3 @@ Route::middleware('guest')->group(function () {
     Route::get('login', [SessionsController::class, 'create'])->name('login.create');
     Route::post('login', [SessionsController::class, 'store']);
 });
-
-Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
-
-Route::redirect('/', '/posts');

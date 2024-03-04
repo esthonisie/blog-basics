@@ -15,7 +15,9 @@
         @auth
             @include('partials._comment-form')
         @else
-            <p style="color: #fff6ec; font-size: 1.8rem;"><a href="{{ route('login.create') }}">Log in here </a>to leave a comment.</p>
+            <p style="color: #fff6ec; font-size: 1.8rem;">
+                <a href="{{ route('login.create') }}">Log in here </a>to leave a comment.
+            </p>
         @endauth
         
         @foreach ($post->comments as $comment )

@@ -23,7 +23,8 @@ class SessionsController extends Controller
         if (Auth::attempt($attributes)) {
             $request->session()->regenerate();
  
-            return redirect(route('posts.index'))->with('success', 'Welcome Back!');
+            return redirect(route('posts.index'))
+                ->with('success', 'Welcome Back!');
         }
  
         return back()->withErrors([
@@ -39,6 +40,7 @@ class SessionsController extends Controller
  
         $request->session()->regenerateToken();
 
-        return redirect(route('posts.index'))->with('success', 'Goodbye!');
+        return redirect(route('posts.index'))
+            ->with('success', 'Goodbye!');
     }
 }

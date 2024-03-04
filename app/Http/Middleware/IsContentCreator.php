@@ -15,12 +15,10 @@ class IsContentCreator
      */
     public function handle(Request $request, Closure $next): Response
     {
-
-        if (auth()->user()?->role_id === 1 || auth()->user()?->role_id === 2) {
-            return $next($request);
+        if (!in_array(auth()->user()?->role_id, [1, 2])) {
+            abort(Response::HTTP_FORBIDDEN);
         }
         
-        abort(Response::HTTP_FORBIDDEN);
-        
+        return $next($request);
     }
 }

@@ -4,6 +4,9 @@
     --highlight: #4e88ab;
     --highlight-hover: #b1bd7d;
     --main-darkred: #9b321d;
+
+    --width-window-small: 768px;
+    --width-sidebar: 185px;
   }
   
   body {
@@ -22,7 +25,7 @@
 
   .blog-container {
     max-width: 1920px;
-    min-width: 768px;
+    min-width: var(--width-window-small);
   }
   
   main {
@@ -86,7 +89,7 @@
   .blog-title-black {
       position: absolute;
       height: 86px;
-      min-width: 768px;
+      min-width: var(--width-window-small);
       width: 100%;
       background-color: rgba(35, 35, 35, 0.3);
   }

@@ -4,16 +4,23 @@
 
 @section('content')
     
-    <form class="formCreate" 
+    <form 
+        class="formCreate" 
         action="{{ route('posts.update', ['post' => $post->id]) }}" 
         method="post" 
-        enctype="multipart/form-data">
+        enctype="multipart/form-data"
+    >
         @csrf
         @method('PATCH')
 
         <label for="title">Title:</label>
         <br>
-        <input type="text" name="title" id="title" value="{{ old('title', $post->title) }}">
+        <input 
+            type="text" 
+            name="title" 
+            id="title" 
+            value="{{ old('title', $post->title) }}"
+        >
         <br>
 
         @error('title')
@@ -23,7 +30,10 @@
 
         <label for="contents">Contents:</label>
         <br>
-        <textarea name="body" id="contents">{{ old('body', $post->body) }}</textarea>
+        <textarea 
+            name="body" 
+            id="contents"
+        >{{ old('body', $post->body) }}</textarea>
         <br>
 
         @error('body')
@@ -33,7 +43,12 @@
 
         <label for="image">Image:</label>
         <br>
-        <input type="file" name="image_post" id="image" value="{{ old('image_post', $post->image_post) }}">
+        <input 
+            type="file" 
+            name="image_post" 
+            id="image" 
+            value="{{ old('image_post', $post->image_post) }}"
+        >
         <br>
         <img src="{{ asset('storage/' . $post->image_post) }}" style="width: 255px;">
 
@@ -60,7 +75,10 @@
         @enderror
         <br>
         
-        <button class="btnForm" type="submit">Update</button>
+        <button 
+            class="btnForm" 
+            type="submit">Update
+        </button>
     </form>
   
 @endsection

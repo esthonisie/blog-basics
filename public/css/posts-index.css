@@ -8,7 +8,8 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    width: calc(100vw - 185px);
+    min-width: calc(var(--width-window-small) - var(--width-sidebar));
+    width: calc(100vw - var(--width-sidebar));
 }
 
 .card-container {
@@ -21,6 +22,18 @@
     border-radius: 8px;
     overflow: hidden;
     margin: 20px;
+}
+
+@media screen and (max-width: 1429px) {
+    .card-container {
+        width: 425px;
+    }
+}
+
+@media screen and (max-width: 1114px) {
+    .card-container {
+        width: 500px;
+    }
 }
 
 .card-image-container {
