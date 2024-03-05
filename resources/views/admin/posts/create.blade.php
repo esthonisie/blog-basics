@@ -52,6 +52,21 @@
         @enderror
        <br>
 
+       <input 
+            type="checkbox" 
+            id="is_premium" 
+            name="is_premium"
+            value="1" 
+            {{ old('is_premium') == 1 ? 'checked' : '' }}
+        >
+            <label for="is_premium">Premium</label>
+        <br>
+
+        @error('is_premium')
+            <p class="formError">{{ $message }}</p>
+        @enderror
+       <br>
+
        <p>Add a maximum of 3 Categories:</p>
        @foreach ($categories as $category)
             <input 

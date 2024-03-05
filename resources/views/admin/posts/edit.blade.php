@@ -57,6 +57,21 @@
         @enderror
        <br>
 
+       <input 
+            type="checkbox" 
+            id="is_premium" 
+            name="is_premium"
+            value="1" 
+            @checked($post->is_premium)
+        >
+            <label for="is_premium">Premium</label>
+        <br>
+
+        @error('is_premium')
+            <p class="formError">{{ $message }}</p>
+        @enderror
+       <br>
+
         @foreach ($categories as $category)
             <input 
                 type="checkbox" 

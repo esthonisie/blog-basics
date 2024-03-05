@@ -8,6 +8,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\PostCommentController;
+use App\Http\Controllers\PostPremiumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::post('/posts/{post}/comments', [PostCommentController::class, 'store'])->name('comments.store');
+    Route::get('/posts/premium', [PostPremiumController::class, 'index'])->name('premium.index');
     Route::post('logout', [SessionsController::class, 'destroy']);
 });
 

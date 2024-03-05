@@ -25,6 +25,7 @@
                         </div>
                     @endforeach 
                 </div>
+                <div class="card-premium"><a href="{{ route('premium.index') }}">test: is_premium {{ $post->is_premium }}</a></div>
             </div>
         </div>
     </article>

@@ -20,6 +20,7 @@ class Post extends Model
         'user_id',
         'image_post',
         'image_card',
+        'is_premium',
         'published_at',
     ];
 

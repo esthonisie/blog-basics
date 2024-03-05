@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('image_post');
             $table->string('image_card');
             $table->boolean('is_premium')->default(false);
-            $table->timestamp('published_at');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

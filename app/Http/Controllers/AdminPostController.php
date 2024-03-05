@@ -31,6 +31,7 @@ class AdminPostController extends Controller
 
         $attributes['user_id'] = auth()->id();
         $attributes['published_at'] = Carbon::now();
+        $attributes['is_premium'] = ($request->post('is_premium') ?? 0) == 1;
         $attributes['image_post'] = request()
             ->file('image_post')
             ->store('img/post-main-img', 'public');
@@ -59,14 +60,15 @@ class AdminPostController extends Controller
 
         $attributes = $request->validated();
 
+        $attributes['is_premium'] = ($request->post('is_premium') ?? 0) == 1;
+        $categories = $attributes["category_id"];
+
         if (isset($attributes['image_post'])) {
             $attributes['image_post'] = request()
                 ->file('image_post')
                 ->store('img/post-main-img', 'public');
             $attributes['image_card'] = $attributes['image_post'];
         }
-
-        $categories = $attributes["category_id"];
         
         $post->update($attributes);
         $post->categories()->sync($categories);
