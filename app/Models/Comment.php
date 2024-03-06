@@ -18,11 +18,10 @@ class Comment extends Model
         'body',
         'user_id',
         'post_id',
-        'published_at',
     ];
 
     protected $casts = [
-        'published_at' => 'datetime'
+        'created_at' => 'datetime'
     ];
 
     public function post()

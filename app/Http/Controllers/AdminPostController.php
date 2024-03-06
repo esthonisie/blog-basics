@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
@@ -16,7 +15,7 @@ class AdminPostController extends Controller
     {
         return view('admin/posts/index', [
             'posts' => Post::where('user_id', auth()->id())
-            ->get()->sortByDesc('published_at')
+            ->get()->sortByDesc('created_at')
         ]);
     }
 
@@ -30,7 +29,6 @@ class AdminPostController extends Controller
         $attributes = $request->validated();
 
         $attributes['user_id'] = auth()->id();
-        $attributes['published_at'] = Carbon::now();
         $attributes['is_premium'] = ($request->post('is_premium') ?? 0) == 1;
         $attributes['image_post'] = request()
             ->file('image_post')

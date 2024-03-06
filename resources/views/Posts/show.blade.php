@@ -7,7 +7,7 @@
         <article class="article-full">
             <img src="{{ asset('storage/' . $post->image_post) }}" style="width: 100%;">
             <h1>{{ $post->title }}</h1>
-            <div>By {{ $post->user->name }} | {{ $post->published_at->format('F j, Y') }}</div>
+            <div>By {{ $post->user->name }} | {{ $post->created_at->format('F j, Y') }}</div>
             <div>{{ $post->body }}</div>
         </article>
         
@@ -22,7 +22,7 @@
         
         @foreach ($post->comments as $comment )
             <div class="post-comment-box">
-                {{ $comment->user->username }} {{ $comment->published_at->format('F j, Y \a\t g:i a') }}
+                {{ $comment->user->username }} {{ $comment->created_at->format('F j, Y \a\t g:i a') }}
                 <br>
                 <div id="{{ $comment->id }}">{{ $comment->body }}</div>
                 <a href="#top">back to top</a>

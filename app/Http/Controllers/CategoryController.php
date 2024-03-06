@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         return view('categories.show', ['posts' => $category->posts()
         ->with('user', 'categories')
-        ->orderByDesc('published_at')
+        ->orderByDesc('created_at')
         ->SimplePaginate(24)]);
     }
 

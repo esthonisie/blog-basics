@@ -16,7 +16,7 @@
             </div>
             <div>
                 <div class="card-name">{{ $post->user->name }}</div>
-                <time class="card-datetime">{{ $post->published_at->format('F j, Y') }}</time> 
+                <time class="card-datetime">{{ $post->created_at->format('F j, Y') }}</time> 
                 <div class="card-category-container">
                     @foreach ($post->categories as $category)
                         <div class="card-category-label">

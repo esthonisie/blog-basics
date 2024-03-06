@@ -21,11 +21,10 @@ class Post extends Model
         'image_post',
         'image_card',
         'is_premium',
-        'published_at',
     ];
 
     protected $casts = [
-        'published_at' => 'datetime'
+        'created_at' => 'datetime'
     ];
     
     public function user() 

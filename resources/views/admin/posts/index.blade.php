@@ -28,7 +28,7 @@
                     <div>
                         <a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
                     </div>
-                    <div style="color: beige">{{ $post->published_at }}</div>
+                    <div style="color: beige">{{ $post->created_at }}</div>
                     <a href="{{ route('posts.edit', ['post' => $post->id]) }}">edit</a>
                     <form 
                         action="{{ route('posts.destroy', ['post' => $post->id]) }}" 
