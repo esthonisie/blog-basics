@@ -24,7 +24,7 @@ class CategoryController extends Controller
         
         Category::create($attributes);
           
-        return redirect(route('dashboard.index'))
+        return redirect(route('creators.index'))
             ->with('success', 'New Category Added');
     }
 }

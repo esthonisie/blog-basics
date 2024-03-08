@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Blog About Something | @yield('title', 'Home Page')</title>
+    <title>A Blog About Something | @yield('title', 'Home')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -33,12 +33,21 @@
             </ul>
             <ul class="nav-header-login">
                 @auth
-                    @if (in_array(auth()->user()?->role_id, [1, 2])) {
-                            <li>
-                                <a href="{{ route('dashboard.index') }}">DASHBOARD</a>
-                            </li>
-                        }
-                    @endif   
+                    @if (in_array(auth()->user()?->role_id, [1, 2])) 
+                        <li>
+                            <a href="{{ route('creators.index') }}">DASHBOARD</a>
+                        </li>
+                    @elseif (auth()->user()?->role_id === 3)
+                        <li>
+                            <a href="{{ route('premium.dashboard') }}">DASHBOARD</a>
+                        </li>
+                    @elseif (auth()->user()?->role_id === 4)
+                        <li>
+                            <a href="{{ route('premium.info') }}">PREMIUM</a>
+                        </li>
+                    @endif
+                @else 
+                    <a href="{{ route('premium.info') }}">PREMIUM</a>
                 @endauth
                 <li>
                     @auth

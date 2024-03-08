@@ -5,7 +5,6 @@
 @section('content')
     
     <form 
-        class="formCreate" 
         action="{{ route('posts.update', ['post' => $post->id]) }}" 
         method="post" 
         enctype="multipart/form-data"
@@ -91,7 +90,6 @@
         <br>
         
         <button 
-            class="btnForm" 
             type="submit">Update
         </button>
     </form>

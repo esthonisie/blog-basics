@@ -19,6 +19,7 @@ class PostSeeder extends Seeder
             'body' =>  'Cras dapibus. Vivamus elementum semper Monkey Island(TM) nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.',
             'image_post' => '../storage/img/post-main-img/rijksmuseum-RJGordon-1777-86_1500px.webp',
             'image_card' => '../storage/img/post-main-img/rijksmuseum-RJGordon-1777-86_card.webp',
+            'is_premium' => 1,
             'created_at' => fake()->unique()->dateTimeBetween('-2 months', 'now', null)
         ]);
 
@@ -28,6 +29,7 @@ class PostSeeder extends Seeder
             'body' => 'Monkey Island(TM), tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.',
             'image_post' => '../storage/img/post-main-img/rijksmuseum-vanGogh-1887_1500px.webp',
             'image_card' => '../storage/img/post-main-img/rijksmuseum-vanGogh-1887_card.webp',
+            'is_premium' => 1,
             'created_at' => fake()->unique()->dateTimeBetween('-2 months', 'now', null)
         ]);
 

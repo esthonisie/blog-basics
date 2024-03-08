@@ -1,14 +1,13 @@
 <?php
 
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
-use App\Http\Controllers\AdminPostController;
-use App\Http\Controllers\PostCommentController;
-use App\Http\Controllers\PostPremiumController;
+use App\Http\Controllers\CreatorController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PremiumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,19 +22,29 @@ use App\Http\Controllers\PostPremiumController;
 
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/premium/info', [PremiumController::class, 'info'])->name('premium.info');
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 Route::redirect('/', '/posts');
 
 Route::middleware('auth')->group(function () {
-    Route::middleware('creator')->prefix('admin')->group(function () {
-        Route::resource('/posts', AdminPostController::class)->except('index', 'show');
-        Route::get('/dashboard', [AdminPostController::class, 'index'])->name('dashboard.index');
-        Route::post('/posts/categories', [CategoryController::class, 'store'])->name('categories.store');
+
+    Route::middleware('is_creator')->group(function () {
+        Route::resource('/creators/posts', CreatorController::class)->except('index', 'show');
+        Route::get('/creators/dashboard', [CreatorController::class, 'index'])->name('creators.index');
+        Route::post('/creators/categories', [CategoryController::class, 'store'])->name('categories.store');
     });
 
-    Route::post('/posts/{post}/comments', [PostCommentController::class, 'store'])->name('comments.store');
-    Route::get('/posts/premium', [PostPremiumController::class, 'index'])->name('premium.index');
+    Route::middleware('is_premium')->group(function () {
+        Route::get('/premium/posts', [PremiumController::class, 'index'])->name('premium.index');
+        Route::get('/premium/posts/{post}', [PremiumController::class, 'show'])->name('premium.show');
+        Route::get('/premium/dashboard', [PremiumController::class, 'dashboard'])->name('premium.dashboard');
+    });
+
+    Route::get('/register/edit', [RegisterController::class, 'edit'])->name('register.edit');
+    Route::patch('/register', [RegisterController::class, 'update'])->name('register.update');
+    Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
     Route::post('logout', [SessionsController::class, 'destroy']);
+    
 });
 
 Route::middleware('guest')->group(function () {

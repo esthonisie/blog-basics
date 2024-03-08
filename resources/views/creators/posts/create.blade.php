@@ -86,7 +86,6 @@
         <br>
 
         <button 
-            class="btnForm" 
             type="submit">Publish
         </button>
     </form>

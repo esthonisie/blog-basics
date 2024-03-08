@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\StoreUserRequest;
 
 class RegisterController extends Controller
 {
@@ -22,8 +22,28 @@ class RegisterController extends Controller
         $user = User::create($attributes);
 
         auth()->login($user);
-          
-        return redirect(route('posts.index'))
+        
+        if ($request->post('membership') == 'free') {
+            return redirect(route('posts.index'))
             ->with('success', 'Your account has been created.');
+        } else {
+            return redirect(route('register.edit'));
+        }
+    }
+
+    public function edit()
+    {
+        return view('register.edit');
+    }
+
+    public function update(): RedirectResponse
+    {
+        $user_id = auth()->id();
+
+        User::where('id', $user_id)
+        ->update(['role_id' => 3]);
+
+        return redirect(route('posts.index'))
+            ->with('success', 'Your PREMIUM account has been activated.');
     }
 }

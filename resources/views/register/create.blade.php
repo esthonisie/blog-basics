@@ -4,8 +4,23 @@
 
 @section('content')
     
-    <form class="formCreate" action="{{ route('register.store') }}" method="post">
+    <form action="{{ route('register.store') }}" method="post">
         @csrf
+       
+        <p>TODO: a basic summary -table/list?- of the free and the paid subscription</p>
+        
+        <br>
+        <input type="radio" id="free" name="membership" value="free" checked>
+        <label for="free">FREE</label>
+        <br>
+        <input type="radio" id="premium" name="membership" value="premium">
+        <label for="premium">PREMIUM</label>
+        <br>
+
+        @error('role_id')
+            <p class="formError">{{ $message }}</p>
+        @enderror
+        <br>
 
         <label for="first_name">First Name:</label>
         <br>
@@ -52,7 +67,7 @@
             <p class="formError">{{ $message }}</p>
         @enderror
 
-        <button class="btnForm" type="submit">Sign Up</button>
+        <button type="submit">Sign Up</button>
     </form>
   
 @endsection

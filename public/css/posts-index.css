@@ -47,6 +47,19 @@
     height:inherit;
 }
 
+.card-premium {
+    background-color: var(--main-light);
+    color: #80885e;
+    font-size: 1.6rem;
+    font-weight: 700;
+    position: absolute;
+    z-index: 100;
+    padding: 5px;
+    border: 1px solid #80885e;
+    border-radius: 8px;
+    margin: 20px 0 0 20px;
+}
+
 .card-text-container {
     height: 100%;
     padding: 20px;
@@ -96,10 +109,6 @@
 
 .card-category-label span {
     color: var(--main-darkred);
-}
-
-.card-premium {
-    font-size: 1.6rem;
 }
 
 .paginate-index {

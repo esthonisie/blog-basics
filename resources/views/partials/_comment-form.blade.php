@@ -1,5 +1,4 @@
 <form 
-    class="formCreate" 
     action="{{ route('comments.store', ['post' => $post->id]) }}" 
     method="post"
 >
@@ -18,7 +17,6 @@
     @enderror
     
     <button 
-        class="btnForm" 
         type="submit">Comment
     </button>
 </form>

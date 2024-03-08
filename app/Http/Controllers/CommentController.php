@@ -7,7 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class PostCommentController extends Controller
+class CommentController extends Controller
 {
     public function store(Request $request, Post $post): RedirectResponse
     {

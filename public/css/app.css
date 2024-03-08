@@ -16,6 +16,7 @@
   form {
     color: var(--main-light);
     font-size: 1.8rem;
+    margin: 20px;
   }
 
   .formError {

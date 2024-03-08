@@ -4,7 +4,7 @@
 
 @section('content')
     
-    <form class="formCreate" action="/login" method="post">
+    <form action="/login" method="post">
         @csrf
 
         <label for="email">Email:</label>
@@ -25,7 +25,7 @@
             <p class="formError">{{ $message }}</p>
         @enderror
 
-        <button class="btnForm" type="submit">Log In</button>
+        <button type="submit">Log In</button>
     </form>
   
 @endsection

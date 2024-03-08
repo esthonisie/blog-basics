@@ -8,12 +8,12 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 
-class AdminPostController extends Controller
+class CreatorController extends Controller
 {
     // dashboard
     public function index()
     {
-        return view('admin/posts/index', [
+        return view('creators.index', [
             'posts' => Post::where('user_id', auth()->id())
             ->get()->sortByDesc('created_at')
         ]);
@@ -21,7 +21,7 @@ class AdminPostController extends Controller
 
     public function create()
     {
-        return view('admin/posts/create', ['categories' => Category::all()]);
+        return view('creators.posts.create', ['categories' => Category::all()]);
     }
 
     public function store(StorePostRequest $request): RedirectResponse
@@ -47,7 +47,7 @@ class AdminPostController extends Controller
     {
         $categories = Category::all();
 
-        return view('admin/posts/edit', compact('post', 'categories'));
+        return view('creators.posts.edit', compact('post', 'categories'));
     }
 
     public function update(UpdatePostRequest $request, Post $post)
@@ -83,7 +83,7 @@ class AdminPostController extends Controller
 
         $post->delete();
 
-        return redirect(route('dashboard.index'))
+        return redirect(route('creators.index'))
             ->with('success', 'Post Deleted');
     }
 }

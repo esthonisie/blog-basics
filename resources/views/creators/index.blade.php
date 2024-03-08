@@ -3,7 +3,7 @@
 @section('title', 'My Posts')
 
 @section('content')
-    <div class="" style="font-size: 1.8rem;">
+    <div style="font-size: 1.8rem; margin: 20px;">
         <a href="{{ route('posts.create') }}">+ New Post</a>
         <form 
             action="{{ route('categories.store') }}" 
