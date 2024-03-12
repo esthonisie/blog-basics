@@ -9,15 +9,12 @@
             <h1>{{ $post->title }}</h1>
             <div>By {{ $post->user->name }} | {{ $post->created_at->format('F j, Y') }}</div>
             <div>{{ $post->body }}</div>
+            <a href="{{ url()->previous() }}">&#8594; previous page</a>
         </article>
         
         <span id="top"></span>
         @auth
             @include('partials._comment-form')
-        @else
-            <p style="color: #fff6ec; font-size: 1.8rem;">
-                <a href="{{ route('login.create') }}">Log in here </a>to leave a comment.
-            </p>
         @endauth
         
         @foreach ($post->comments as $comment )
@@ -25,7 +22,7 @@
                 {{ $comment->user->username }} {{ $comment->created_at->format('F j, Y \a\t g:i a') }}
                 <br>
                 <div id="{{ $comment->id }}">{{ $comment->body }}</div>
-                <a href="#top">back to top</a>
+                <a href="#top" style="font-size: 1.5rem;">&#8593; comment form &#8593;</a>
             </div>
         @endforeach
     </div>    

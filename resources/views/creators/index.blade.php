@@ -6,6 +6,8 @@
     <div style="font-size: 1.8rem; margin: 20px;">
         <a href="{{ route('posts.create') }}">+ New Post</a>
         <form 
+            class="form-basic"
+            style="margin: 0;"
             action="{{ route('categories.store') }}" 
             method="post"
         >

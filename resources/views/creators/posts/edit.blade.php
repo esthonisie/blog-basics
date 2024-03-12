@@ -5,6 +5,7 @@
 @section('content')
     
     <form 
+        class="form-basic"
         action="{{ route('posts.update', ['post' => $post->id]) }}" 
         method="post" 
         enctype="multipart/form-data"

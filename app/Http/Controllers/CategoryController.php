@@ -8,14 +8,6 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function show(Category $category)
-    {
-        return view('categories.show', ['posts' => $category->posts()
-        ->with('user', 'categories')
-        ->orderByDesc('created_at')
-        ->SimplePaginate(24)]);
-    }
-
     public function store(Request $request): RedirectResponse
     {
         $attributes = $request->validate([

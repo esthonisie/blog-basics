@@ -1,4 +1,5 @@
 <form 
+    class="form-basic"
     action="{{ route('comments.store', ['post' => $post->id]) }}" 
     method="post"
 >

@@ -23,7 +23,6 @@ use App\Http\Controllers\PremiumController;
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 Route::get('/premium/info', [PremiumController::class, 'info'])->name('premium.info');
-Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 Route::redirect('/', '/posts');
 
 Route::middleware('auth')->group(function () {
@@ -35,9 +34,8 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::middleware('is_premium')->group(function () {
-        Route::get('/premium/posts', [PremiumController::class, 'index'])->name('premium.index');
         Route::get('/premium/posts/{post}', [PremiumController::class, 'show'])->name('premium.show');
-        Route::get('/premium/dashboard', [PremiumController::class, 'dashboard'])->name('premium.dashboard');
+        Route::get('/premium/dashboard', [PremiumController::class, 'index'])->name('premium.index');
     });
 
     Route::get('/register/edit', [RegisterController::class, 'edit'])->name('register.edit');

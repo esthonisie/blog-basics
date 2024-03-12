@@ -45,8 +45,7 @@
                 <div class="card-category-container">
                     @foreach ($post->categories as $category)
                         <div class="card-category-label">
-                            <span>|</span><a href="{{ route('categories.show', 
-                            ['category' => $category->id]) }}">{{ $category->name }}</a><span>|</span>
+                            <span>|</span><a href="/posts?category={{ $category->id }}">{{ $category->name }}</a><span>|</span>
                         </div>
                     @endforeach 
                 </div>

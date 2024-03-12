@@ -8,10 +8,7 @@ class PremiumController extends Controller
 {
     public function index()
     {
-        return view('premium.index', ['posts' => Post::with('user', 'categories')
-            ->where('is_premium', 1)
-            ->orderByDesc('created_at')
-            ->SimplePaginate(24)]);
+        return view('premium.index');
     }
 
     public function show(Post $post)
@@ -22,10 +19,5 @@ class PremiumController extends Controller
     public function info()
     {
         return view('premium.info');
-    }
-
-    public function dashboard()
-    {
-        return view('premium.dashboard');
     }
 }

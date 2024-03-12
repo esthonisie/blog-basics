@@ -4,7 +4,7 @@
 
 @section('content')
     
-    <form action="/login" method="post">
+    <form class="form-basic" action="/login" method="post">
         @csrf
 
         <label for="email">Email:</label>

@@ -4,10 +4,10 @@
 
 @section('content')
     
-    <form action="{{ route('register.store') }}" method="post">
+    <form class="form-basic" action="{{ route('register.store') }}" method="post">
         @csrf
        
-        <p>TODO: a basic summary -table/list?- of the free and the paid subscription</p>
+        <p>TODO: a basic summary -table/list?- about the benefits of the free and the paid subscription</p>
         
         <br>
         <input type="radio" id="free" name="membership" value="free" checked>

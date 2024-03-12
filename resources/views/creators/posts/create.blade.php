@@ -4,6 +4,7 @@
 
 @section('content')
     <form 
+        class="form-basic"
         action="{{ route('posts.store') }}" 
         method="post" 
         enctype="multipart/form-data"

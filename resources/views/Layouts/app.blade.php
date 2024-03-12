@@ -32,23 +32,25 @@
                 <li><a href="#">ABOUT US</a></li>
             </ul>
             <ul class="nav-header-login">
-                @auth
-                    @if (in_array(auth()->user()?->role_id, [1, 2])) 
-                        <li>
-                            <a href="{{ route('creators.index') }}">DASHBOARD</a>
-                        </li>
-                    @elseif (auth()->user()?->role_id === 3)
-                        <li>
-                            <a href="{{ route('premium.dashboard') }}">DASHBOARD</a>
-                        </li>
-                    @elseif (auth()->user()?->role_id === 4)
-                        <li>
-                            <a href="{{ route('premium.info') }}">PREMIUM</a>
-                        </li>
-                    @endif
-                @else 
-                    <a href="{{ route('premium.info') }}">PREMIUM</a>
-                @endauth
+                <li>
+                    @auth
+                        @if (in_array(auth()->user()?->role_id, [1, 2])) 
+                            
+                                <a href="{{ route('creators.index') }}">DASHBOARD</a>
+                            
+                        @elseif (auth()->user()?->role_id === 3)
+                            
+                                <a href="{{ route('premium.index') }}">DASHBOARD</a>
+                            
+                        @elseif (auth()->user()?->role_id === 4)
+                            
+                                <a href="{{ route('premium.info') }}">PREMIUM</a>
+                            
+                        @endif
+                    @else 
+                        <a href="{{ route('premium.info') }}">PREMIUM</a>
+                    @endauth
+                </li>
                 <li>
                     @auth
                         <span class="welcome">welcome, {{ auth()->user()->first_name }}</span>
@@ -76,10 +78,6 @@
         </nav>
         <main>
             @yield('content')
-            {{-- TODO: vervangen door components, eerst nog lezen hoe... --}}
-            @use('App\Models\Category')
-            @include('partials/sidebar', ['categories' => Category::has('posts')
-            ->withCount('posts')->orderByDesc('posts_count')->get()])
         </main>
         <footer></footer>
     </div>

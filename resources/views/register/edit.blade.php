@@ -3,7 +3,7 @@
 @section('title', 'Premium Payment')
 
 @section('content')
-    <form action="{{ route('register.update') }}" method="post">
+    <form class="form-basic" action="{{ route('register.update') }}" method="post">
         @csrf
         @method('PATCH')
         <p>TODO: some text about the payment system</p>

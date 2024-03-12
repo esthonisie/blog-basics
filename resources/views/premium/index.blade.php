@@ -1,14 +1,9 @@
 @extends ('layouts/app')
 
-@section('title', 'Premium')
+@section('title', 'Premium Dashboard')
 
 @section('content')
-    <div class="paginate-cards-container">
-        <div class="cards-main-container">
-            @include('partials._card-post')
-        </div>
-        <div class="paginate-index">
-            {{ $posts->links() }}
-        </div>
-    </div>
+    <p style="font-size: 1.8rem; color:#fff6ec; margin:20px;">
+        TODO: a dashboard where you can view your -not yet existing- bookmarks etc.
+    </p>
 @endsection
