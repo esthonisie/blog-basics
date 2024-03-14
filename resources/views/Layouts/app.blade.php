@@ -30,6 +30,7 @@
             <ul class="nav-header-home">
                 <li><a href="{{ route('posts.index') }}">HOME</a></li>
                 <li><a href="#">ABOUT US</a></li>
+                <li><a href="#">CONTACT</a></li>
             </ul>
             <ul class="nav-header-login">
                 <li>

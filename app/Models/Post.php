@@ -27,19 +27,28 @@ class Post extends Model
         'created_at' => 'datetime'
     ];
 
+    // TODO: figuring out how to remove unwanted query parameters in url
     public function scopeFilter($query, array $filters)
     {
+        $query->when($filters['search'] ?? false, fn($query, $search) =>
+            $query->where(fn($query) =>
+                $query
+                    ->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('body', 'like', '%' . $search . '%')
+            )      
+        );
+
         if (isset($filters['posts'])) {
             if ($filters['posts'] !== 'all') {
                 $query
-                    ->where('is_premium', 'like', '%' . request('posts') . '%');
+                    ->where('is_premium', request('posts'));
             }
         }
 
         if (isset($filters['author'])) {
             if ($filters['author'] !== 'all') {
                 $query->whereHas('user', fn($q) =>
-                    $q->where('last_name', 'like', '%' . request('author') . '%')
+                    $q->where('last_name', request('author'))
                 ); 
             }
         }
@@ -47,11 +56,17 @@ class Post extends Model
         if (isset($filters['category'])) {
             if ($filters['category'] !== 'all') {
                 $query->whereHas('categories', fn($q) =>
-                    $q->where('category_id', 'like', '%' . request('category') . '%')
+                    $q->where('category_id', request('category'))
                 ); 
             }
         }
 
+        if (isset($filters['year'])) {
+            if ($filters['year'] !== 'all') {
+                $query->where('created_at', 'like', '%' . request('year') . '%');
+            }
+        }
+        
         /* $query->when($filters['posts'] ?? false, fn($query, $posts) =>
             $query->where('is_premium', $posts)    
         );

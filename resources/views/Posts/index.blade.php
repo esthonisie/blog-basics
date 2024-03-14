@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="posts-main-container">
-        @include('partials/sidebar')
+        @include('partials._sidebar')
         <div class="paginate-cards-container">
             <div class="cards-main-container">
                 @include('partials._card-post')
