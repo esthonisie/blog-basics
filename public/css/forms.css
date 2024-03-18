@@ -3,18 +3,64 @@
     flex-direction: column;
 }
 
-.form-comments textarea::placeholder {
-    color: var(--main-light);
-    opacity: 0.65;
+.sidebar-posts-filter-error {
+    color: #db3f20;
     font-family: 'Alegreya Sans SC', sans-serif;
-    font-size: 1.8rem;
-    text-transform: uppercase;
+    font-size: 1.6rem;
+    text-transform: lowercase;
+    margin-top: -5px;
+    margin-bottom: 10px;
 }
 
-.form-comments textarea::-ms-input-placeholder { /* Edge 12 -18 */
-    color: var(--main-light);
-    opacity: 0.65;
+/* ------------------- BUTTONS --------------------- */
+
+.form-main-btn {
+    background-color: var(--main-dark);
+    font-family: 'Alegreya Sans SC', sans-serif;
+    width: fit-content;
+    border: 1px solid;
+    border-color: #999;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out, 
+    border-color 0.1s ease-in-out;
 }
+
+.form-main-btn:hover {
+    color: var(--highlight);
+    border-color: var(--highlight-hover);
+}
+  
+.form-main-btn:active {
+    color: #5aa7d7;
+    border-color: #b8bda4;
+    background-color: #1d1d1d;
+}
+
+.posts-filter-btn-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.posts-filter-btn {
+    color: rgba(255, 246, 236, 0.65);
+    font-size: 1.8rem;
+    padding: 12px 15px 15px 15px;
+    margin-bottom: 20px;
+}
+
+.posts-filter-btn a,
+.posts-filter-btn a:hover {
+    color: inherit;
+}
+
+.comment-btn {
+    color: rgba(255, 246, 236, 0.65);
+    font-size: 1.8rem;
+    padding: 10px 20px;
+} 
+
+/* ------------------- TEXTAREA COMMENTS --------------------- */
 
 .form-comments textarea {
     color: rgba(255, 246, 236, 0.9);
@@ -33,28 +79,65 @@
     outline: 1px solid var(--highlight-hover);
 }
 
-.form-comments button {
-    background-color: var(--main-dark);
-    color: rgba(255, 246, 236, 0.65);
+.form-comments textarea::placeholder {
+    color: var(--main-light);
+    opacity: 0.65;
     font-family: 'Alegreya Sans SC', sans-serif;
     font-size: 1.8rem;
-    width: fit-content;
-    padding: 10px 20px;
-    border: 1px solid;
-    border-color: #999;
+    text-transform: uppercase;
+}
+
+.form-comments textarea::-ms-input-placeholder { /* Edge 12 -18 */
+    color: var(--main-light);
+    opacity: 0.65;
+}
+
+/* ------------------- INPUT SELECT --------------------- */
+
+.sidebar-posts-filter {
+    margin-top: 20px;
+}
+
+.sidebar-posts-filter input {
+    margin-bottom: 30px;
+}
+
+.sidebar-posts-filter select {
+    margin-bottom: 10px;
+}
+
+.sidebar-posts-filter select:focus {
+    outline: none;
+}
+
+.sidebar-posts-filter input,
+.sidebar-posts-filter select {
+    appearance: none;
+    /* safari */
+    -webkit-appearance: none;
+    color: rgba(255, 246, 236, 0.9);
+    background-color: var(--main-dark);
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 1.8rem;
+    text-transform: lowercase;
+    padding: 12px 15px 15px 15px;
     border-radius: 8px;
-    cursor: pointer;
-    transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out, 
-    border-color 0.1s ease-in-out;
-  } 
-  
-  .form-comments button:hover {
-    color: var(--highlight);
-    border-color: var(--highlight-hover);
-  }
-  
-  .form-comments button:active {
-    color: #5aa7d7;
-    border-color: #b8bda4;
-    background-color: #1d1d1d;
-  }
+    border: 1px solid #999;
+    width: 100%;
+}
+
+input::placeholder {
+    color: var(--main-light);
+    opacity: 0.65;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 1.8rem;
+}
+
+input::-ms-input-placeholder { /* Edge 12 -18 */
+    color: var(--main-light);
+    opacity: 0.65;
+}
+
+input:focus {
+    outline: 1px solid var(--highlight-hover);
+}

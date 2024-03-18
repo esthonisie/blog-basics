@@ -8,5 +8,5 @@
 .sidebar-sticky {
     position: sticky;
     top: 75px;
-    margin-left: 20px;
+    margin: 0 20px;
 }

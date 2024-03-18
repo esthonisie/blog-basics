@@ -10,7 +10,8 @@
         placeholder="Share your thoughts and join the conversation:"
     ></textarea>
 
-    <button 
+    <button
+        class="form-main-btn comment-btn" 
         type="submit">COMMENT
     </button>
 </form>
