@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="posts-main-container">
-        @include('partials._sidebar')
         <div class="paginate-cards-container">
             <div class="cards-main-container">
                 @include('partials._card-post')
@@ -13,5 +12,6 @@
                 {{ $posts->links() }}
             </div>
         </div>
+        @include('partials._sidebar-search')
     </div>
 @endsection

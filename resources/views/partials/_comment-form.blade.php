@@ -1,23 +1,16 @@
 <form 
-    class="form-basic"
+    class="form-comments"
     action="{{ route('comments.store', ['post' => $post->id]) }}" 
     method="post"
 >
     @csrf
 
-    <label for="comment">Share your thoughts and join the conversation:</label>
-    <br>
     <textarea 
-        name="body" 
-        id="comment"
+        name="body"
+        placeholder="Share your thoughts and join the conversation:"
     ></textarea>
-    <br>
 
-    @error('body')
-        <p class="formError">{{ $message }}</p>
-    @enderror
-    
     <button 
-        type="submit">Comment
+        type="submit">COMMENT
     </button>
 </form>

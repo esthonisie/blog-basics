@@ -2,7 +2,7 @@
     min-width: var(--width-sidebar);
     max-width: var(--width-sidebar);
     min-height: calc(100vh - 260px);
-    border-right: 1px dotted var(--highlight);
+    border-left: 1px dotted var(--highlight);
 }
 
 .sidebar-sticky {

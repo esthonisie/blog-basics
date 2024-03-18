@@ -15,7 +15,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/posts-index.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/posts-show.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/forms.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/post-show.css') }}" rel="stylesheet" />
 </head>
 <body>
     <div class="blog-container">
@@ -54,7 +55,7 @@
                 </li>
                 <li>
                     @auth
-                        <span class="welcome">welcome, {{ auth()->user()->first_name }}</span>
+                        <span class="welcome-name">welcome, {{ auth()->user()->first_name }}</span>
                     @else
                         <a href="{{ route('register.create') }}">REGISTER</a>
                     @endauth

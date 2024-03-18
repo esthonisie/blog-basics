@@ -1,0 +1,60 @@
+.form-comments {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-comments textarea::placeholder {
+    color: var(--main-light);
+    opacity: 0.65;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.form-comments textarea::-ms-input-placeholder { /* Edge 12 -18 */
+    color: var(--main-light);
+    opacity: 0.65;
+}
+
+.form-comments textarea {
+    color: rgba(255, 246, 236, 0.9);
+    background-color: var(--main-dark);
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 1.8rem;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #999;
+    width: 450px;
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.form-comments textarea:focus {
+    outline: 1px solid var(--highlight-hover);
+}
+
+.form-comments button {
+    background-color: var(--main-dark);
+    color: rgba(255, 246, 236, 0.65);
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 1.8rem;
+    width: fit-content;
+    padding: 10px 20px;
+    border: 1px solid;
+    border-color: #999;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out, 
+    border-color 0.1s ease-in-out;
+  } 
+  
+  .form-comments button:hover {
+    color: var(--highlight);
+    border-color: var(--highlight-hover);
+  }
+  
+  .form-comments button:active {
+    color: #5aa7d7;
+    border-color: #b8bda4;
+    background-color: #1d1d1d;
+  }

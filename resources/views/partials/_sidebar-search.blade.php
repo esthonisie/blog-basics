@@ -1,7 +1,7 @@
 <div class="sidebar-container">
     <div class="sidebar-sticky">
        <form
-            style="color: beige; font-size:1.6rem; margin-top:20px;"
+            style="color:var(--main-light); font-size:1.6rem; margin-top:20px;"
             action="{{ route('posts.index') }}" 
             method="get"
         >

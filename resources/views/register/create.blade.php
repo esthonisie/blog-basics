@@ -18,7 +18,7 @@
         <br>
 
         @error('role_id')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
         <br>
 
@@ -28,7 +28,7 @@
         <br>
 
         @error('first_name')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
 
         <label for="last_name">Last Name:</label>
@@ -37,7 +37,7 @@
         <br>
 
         @error('last_name')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
 
         <label for="username">Username:</label>
@@ -46,7 +46,7 @@
         <br>
 
         @error('username')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
 
         <label for="email">Email:</label>
@@ -55,7 +55,7 @@
         <br>
 
         @error('email')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
 
         <label for="password">Password:</label>
@@ -64,7 +64,7 @@
         <br>
 
         @error('password')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
 
         <button type="submit">Sign Up</button>

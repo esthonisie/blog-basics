@@ -22,7 +22,7 @@
         <br>
 
         @error('title')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
         <br>
 
@@ -35,7 +35,7 @@
         <br>
 
         @error('body')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
        <br>
 
@@ -49,7 +49,7 @@
         <br>
 
         @error('image_post')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
        <br>
 
@@ -64,7 +64,7 @@
         <br>
 
         @error('is_premium')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
        <br>
 
@@ -82,7 +82,7 @@
         @endforeach
 
         @error('category_id')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
         <br>
 

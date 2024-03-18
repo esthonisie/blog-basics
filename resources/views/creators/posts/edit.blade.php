@@ -24,7 +24,7 @@
         <br>
 
         @error('title')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
         <br>
 
@@ -37,7 +37,7 @@
         <br>
 
         @error('body')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
         <br>
 
@@ -53,7 +53,7 @@
         <img src="{{ asset('storage/' . $post->image_post) }}" style="width: 255px;">
 
         @error('image_post')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
        <br>
 
@@ -68,7 +68,7 @@
         <br>
 
         @error('is_premium')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
        <br>
 
@@ -86,7 +86,7 @@
         @endforeach
 
         @error('category_id')
-            <p class="formError">{{ $message }}</p>
+            <p class="form-error">{{ $message }}</p>
         @enderror
         <br>
         

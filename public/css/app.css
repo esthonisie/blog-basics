@@ -6,7 +6,7 @@
     --main-darkred: #9b321d;
 
     --width-window-small: 768px;
-    --width-sidebar: 185px;
+    --width-sidebar: 277px;
 }
   
 body {
@@ -19,7 +19,7 @@ body {
     margin: 20px;
 }
 
-.formError {
+.form-error {
     color: #cc3c1f;
     font-size: 1.8rem;
 }
@@ -106,7 +106,6 @@ html {
 .nav-header ul {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     list-style: none;
     font-family: 'Alegreya Sans SC', sans-serif;
     font-size: 1.8rem;
@@ -131,7 +130,7 @@ html {
     min-width: fit-content;
 }
 
-.welcome {
+.welcome-name {
     color: var(--main-light);
     text-transform: uppercase;
 }
