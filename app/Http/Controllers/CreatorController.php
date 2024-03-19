@@ -13,6 +13,8 @@ class CreatorController extends Controller
     // dashboard
     public function index()
     {
+        // TODO: ipv een where query kun je ook overwegen via relaties te querien:
+        // Auth::user()->posts
         return view('creators.index', [
             'posts' => Post::where('user_id', auth()->id())
             ->get()->sortByDesc('created_at')
@@ -35,6 +37,8 @@ class CreatorController extends Controller
             ->store('img/post-main-img', 'public');
         $attributes['image_card'] = $attributes['image_post']; 
         // TODO: install 'Intervention Image' for making smaller size img copy 
+        // TODO: overweeg meervoud in naamgeving (catogory_ids) om aan te geven dat het om meerdere
+        // elementen gaat
         $categories = $attributes['category_id'];
 
         $post = Post::create($attributes);
@@ -52,6 +56,9 @@ class CreatorController extends Controller
 
     public function update(UpdatePostRequest $request, Post $post)
     {
+        // TODO: technisch is dit een goede oplossing, maar probeer dit eens
+        // mbv een policy op te lossen zodat de authorisatie herbruikbaar wordt
+        // op andere plekken in je code
         if ($post->user_id !== auth()->id()) {
             abort(403, 'unauthorized Action');
         }
@@ -77,6 +84,7 @@ class CreatorController extends Controller
 
     public function destroy(Post $post)
     {
+        
         if ($post->user_id !== auth()->id()) {
             abort(403, 'unauthorized Action');
         }

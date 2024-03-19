@@ -10,6 +10,8 @@ class CategoryController extends Controller
 {
     public function store(Request $request): RedirectResponse
     {
+        // TODO: stop validatie in aparte form request validation class
+        // TODO: gebruik duidelijkere naamgeving voor variable "attriubtes", bijv.: "validated"
         $attributes = $request->validate([
             'name' => ['required', 'min:2', 'max:100'],
         ]);

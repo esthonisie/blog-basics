@@ -17,6 +17,11 @@ class RegisterController extends Controller
     {
         $attributes = $request->validated();
 
+        // TODO: voor de leesbaarheid en foutgevoeligheid kun je de role via de naam
+        // querien: Attribute::where('name', 'subscriber_free')->get()
+        // maar misschieb nog mooier en leesbaarder is om een enum te maken, zowel
+        // in PHP als in je migration (database), voor inspiratie zie:
+        // https://kongulov.dev/blog/simplifying-data-structures-with-enum-in-laravel
         $attributes['role_id'] = 4;
             
         $user = User::create($attributes);
@@ -38,6 +43,7 @@ class RegisterController extends Controller
 
     public function update(): RedirectResponse
     {
+        // TODO: dit kan nog iets korter, hint: werk vanuit de relatie van Auth::user()->
         $user_id = auth()->id();
 
         User::where('id', $user_id)

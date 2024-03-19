@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             PostSeeder::class
         ]);
 
+        // TODO: onderstaande factory vanuit de Post seeder uitvoeren
+        // TODO: evt. kun je nog een forEach aan de ->create()->forEach koppelen?
         Post::factory(32)->create();
 
         foreach (Post::all() as $post) {

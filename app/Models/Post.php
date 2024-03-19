@@ -28,6 +28,7 @@ class Post extends Model
     ];
 
     // TODO: figuring out how to remove unwanted query parameters in url
+    // Opmerking: mooie oplossing!
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, fn($query, $search) =>

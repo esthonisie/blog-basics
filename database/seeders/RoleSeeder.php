@@ -13,6 +13,8 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
+        // TODO: je kunt code besparen door alle name values in een array te zetten en hier
+        // doorheen te loopen
         Role::create([
             'name' => 'admin'
         ]);
