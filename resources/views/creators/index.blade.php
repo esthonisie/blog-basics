@@ -28,7 +28,11 @@
             @foreach ($posts as $post)
                 <div style="margin-top: 25px;">
                     <div>
-                        <a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
+                        @if ($post->is_premium == 1)
+                            <a href="{{ route('premium.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
+                        @else 
+                            <a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
+                        @endif
                     </div>
                     <div style="color: beige">{{ $post->created_at }}</div>
                     <a href="{{ route('posts.edit', ['post' => $post->id]) }}">edit</a>

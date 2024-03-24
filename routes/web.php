@@ -27,13 +27,13 @@ Route::redirect('/', '/posts');
 
 Route::middleware('auth')->group(function () {
 
-    Route::middleware('is_creator')->group(function () {
+    Route::middleware('role:content_creator')->group(function () {
         Route::resource('/creators/posts', CreatorController::class)->except('index', 'show');
         Route::get('/creators/dashboard', [CreatorController::class, 'index'])->name('creators.index');
         Route::post('/creators/categories', [CategoryController::class, 'store'])->name('categories.store');
     });
 
-    Route::middleware('is_premium')->group(function () {
+    Route::middleware('role:subscriber_premium')->group(function () {
         Route::get('/premium/posts/{post}', [PremiumController::class, 'show'])->name('premium.show');
         Route::get('/premium/dashboard', [PremiumController::class, 'index'])->name('premium.index');
     });

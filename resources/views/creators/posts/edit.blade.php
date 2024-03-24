@@ -76,16 +76,16 @@
             <input 
                 type="checkbox" 
                 id="{{ $category->name }}" 
-                name="category_id[]" 
+                name="chosen_categories[]" 
                 value="{{ $category->id }}" 
-                @checked(in_array($category->id, old('category_id', 
+                @checked(in_array($category->id, old('chosen_categories', 
                 $post->categories->pluck('id')->toArray())))
             >
             <label for="{{ $category->name }}">{{ $category->name }}</label>
             <br>
         @endforeach
 
-        @error('category_id')
+        @error('chosen_categories')
             <p class="form-error">{{ $message }}</p>
         @enderror
         <br>

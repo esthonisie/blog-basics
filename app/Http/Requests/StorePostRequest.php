@@ -26,8 +26,8 @@ class StorePostRequest extends FormRequest
             'title' => ['required','min:2', 'max:255', Rule::unique('posts', 'title')],
             'body' => ['required'],
             'image_post' => ['required', 'image', 'max:1024'],
-            'category_id' => ['required', 'array', 'min:1', 'max:3'],
-            'category_id.*' => ['integer'],
+            'chosen_categories' => ['required', 'array', 'min:1', 'max:3'],
+            'chosen_categories.*' => ['integer'],
         ];
     }
 }

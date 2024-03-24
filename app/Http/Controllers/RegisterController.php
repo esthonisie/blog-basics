@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreUserRequest;
@@ -15,16 +16,12 @@ class RegisterController extends Controller
 
     public function store(StoreUserRequest $request): RedirectResponse
     {
-        $attributes = $request->validated();
+        $validated = $request->validated();
 
-        // TODO: voor de leesbaarheid en foutgevoeligheid kun je de role via de naam
-        // querien: Attribute::where('name', 'subscriber_free')->get()
-        // maar misschieb nog mooier en leesbaarder is om een enum te maken, zowel
-        // in PHP als in je migration (database), voor inspiratie zie:
-        // https://kongulov.dev/blog/simplifying-data-structures-with-enum-in-laravel
-        $attributes['role_id'] = 4;
+        $role_free = Role::where('name', 'subscriber_free')->first()->id;
+        $validated['role_id'] = $role_free;
             
-        $user = User::create($attributes);
+        $user = User::create($validated);
 
         auth()->login($user);
         
@@ -43,11 +40,9 @@ class RegisterController extends Controller
 
     public function update(): RedirectResponse
     {
-        // TODO: dit kan nog iets korter, hint: werk vanuit de relatie van Auth::user()->
-        $user_id = auth()->id();
-
-        User::where('id', $user_id)
-        ->update(['role_id' => 3]);
+        $role_premium = Role::where('name', 'subscriber_premium')->first()->id;
+        $subscriber = request()->user();
+        $subscriber->update(['role_id' => $role_premium]);
 
         return redirect(route('posts.index'))
             ->with('success', 'Your PREMIUM account has been activated.');

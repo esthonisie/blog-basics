@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Post;
+use App\Models\Category;
+use Illuminate\Database\Seeder;
 
 class PostSeeder extends Seeder
 {
@@ -21,7 +22,7 @@ class PostSeeder extends Seeder
             'image_card' => '../storage/img/post-main-img/rijksmuseum-RJGordon-1777-86_card.webp',
             'is_premium' => 1,
             'created_at' => fake()->unique()->dateTimeBetween('-2 months', 'now', null)
-        ]);
+        ])->categories()->sync([4]);
 
         Post::create([
             'user_id' => '2',
@@ -31,7 +32,7 @@ class PostSeeder extends Seeder
             'image_card' => '../storage/img/post-main-img/rijksmuseum-vanGogh-1887_card.webp',
             'is_premium' => 1,
             'created_at' => fake()->unique()->dateTimeBetween('-2 months', 'now', null)
-        ]);
+        ])->categories()->sync([2,7]);
 
         Post::create([
             'user_id' => '3',
@@ -40,7 +41,7 @@ class PostSeeder extends Seeder
             'image_post' => '../storage/img/post-main-img/rijksmuseum-Bolswert-1624_1500px.webp',
             'image_card' => '../storage/img/post-main-img/rijksmuseum-Bolswert-1624_card.webp',
             'created_at' => fake()->unique()->dateTimeBetween('-2 months', 'now', null)
-        ]);
+        ])->categories()->sync([6,9,10]);
 
         Post::create([
             'user_id' => '2',
@@ -50,6 +51,11 @@ class PostSeeder extends Seeder
             'image_post' => '../storage/img/post-main-img/rijksmuseum-JBraakensiek-1868-1940_1500px.webp',
             'image_card' => '../storage/img/post-main-img/rijksmuseum-JBraakensiek-1868-1940_card.webp',
             'created_at' => fake()->unique()->dateTimeBetween('-2 months', 'now', null)
-        ]);
+        ])->categories()->sync([1,5]);
+
+        Post::factory(32)->create()->each(function ($post) {
+            $randomCategories = Category::inRandomOrder()->take(rand(1,3))->pluck('id');
+            $post->categories()->attach($randomCategories);
+        });
     }
 }

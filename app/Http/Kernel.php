@@ -2,8 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\IsContentCreator;
-use App\Http\Middleware\isPremiumSubscriber;
+use App\Http\Middleware\EnsureUserHasRole;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -67,7 +66,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
-        'is_creator' => IsContentCreator::class,
-        'is_premium' => isPremiumSubscriber::class,
+        'role' => EnsureUserHasRole::class,
     ];
 }
