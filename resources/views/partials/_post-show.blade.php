@@ -12,6 +12,10 @@
                     <span class="post-name">{{ $post->user->name }}</span> 
                     <span class="post-divider">|</span>
                     <span class="post-datetime">{{ $post->created_at->format('F j, Y') }}</span>
+                    @can('update', $post)
+                        <span class="post-divider">|</span>
+                        <a class="post-edit" href="{{ route('posts.edit', ['post' => $post->id]) }}">edit</a>
+                    @endcan
                 </div>
                 <div class="post-body">{{ $post->body }}</div>
                 <a class="post-link-previous" href="{{ url()->previous() }}">&#8594; previous page</a>

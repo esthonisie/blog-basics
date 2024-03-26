@@ -35,18 +35,22 @@
                         @endif
                     </div>
                     <div style="color: beige">{{ $post->created_at }}</div>
-                    <a href="{{ route('posts.edit', ['post' => $post->id]) }}">edit</a>
-                    <form 
-                        action="{{ route('posts.destroy', ['post' => $post->id]) }}" 
-                        method="post"
-                    >
-                        @csrf
-                        @method('DELETE')
-                        <button 
-                            class="btnPostDelete" 
-                            onclick="return confirm('Are you sure?')">Delete
-                        </button>
-                    </form>
+                    @can('update', $post)
+                        <a href="{{ route('posts.edit', ['post' => $post->id]) }}">edit</a>
+                    @endcan
+                    @can('delete', $post)
+                        <form 
+                            action="{{ route('posts.destroy', ['post' => $post->id]) }}" 
+                            method="post"
+                        >
+                            @csrf
+                            @method('DELETE')
+                            <button 
+                                class="btnPostDelete" 
+                                onclick="return confirm('Are you sure?')">Delete
+                            </button>
+                        </form>
+                    @endcan
                 </div>
             @endforeach
             @else

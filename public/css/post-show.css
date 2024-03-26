@@ -84,7 +84,14 @@
     font-size: 1.8rem;
     font-family: 'Archivo Black', sans-serif;
     text-transform: lowercase;
-    margin-left: 6px;
+    margin: 0 6px;
+}
+
+.post-edit {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-left: 4px;
 }
 
 .post-body {

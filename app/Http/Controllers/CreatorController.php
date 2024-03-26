@@ -50,7 +50,7 @@ class CreatorController extends Controller
 
     public function edit(Post $post)
     {
-        if ($post->user_id !== auth()->id()) {
+        if (request()->user()->cannot('update', $post)) {
             abort(403, 'unauthorized Action');
         }
         
@@ -61,10 +61,7 @@ class CreatorController extends Controller
 
     public function update(UpdatePostRequest $request, Post $post)
     {
-        // TODO: technisch is dit een goede oplossing, maar probeer dit eens
-        // mbv een policy op te lossen zodat de authorisatie herbruikbaar wordt
-        // op andere plekken in je code
-        if ($post->user_id !== auth()->id()) {
+        if (request()->user()->cannot('update', $post)) {
             abort(403, 'unauthorized Action');
         }
 
@@ -94,7 +91,7 @@ class CreatorController extends Controller
 
     public function destroy(Post $post)
     {
-        if ($post->user_id !== auth()->id()) {
+        if (request()->user()->cannot('delete', $post)) {
             abort(403, 'unauthorized Action');
         }
 
